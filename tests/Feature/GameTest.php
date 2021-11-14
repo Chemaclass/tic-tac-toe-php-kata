@@ -20,7 +20,7 @@ final class GameTest extends TestCase
     {
         $this->markTestSkipped();
 
-        $board = Board::matrixWithSize(3);
+        $board = Board::create();
         $players = [new Player('O'), new Player('X')];
         $game = new Game($board, $players);
 

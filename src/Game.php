@@ -25,7 +25,7 @@ final class Game
     public function askInputForCurrentPlayer(int $int, int $int1): BoardResult
     {
         // check if winner & check if draw & switch player
-
-        return new BoardResult($this->board, $this->players, $this->currentPlayer);
+        return new BoardResult();
+        // return new BoardResult($this->board, $this->players, $this->currentPlayer);
     }
 }

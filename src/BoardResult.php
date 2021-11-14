@@ -6,7 +6,10 @@ namespace App;
 
 final class BoardResult
 {
-    public function __construct()
+    /**
+     * @param List<Player> $players
+     */
+    public function __construct(Board $board, array $players, Player $currentPlayer)
     {
     }
 }

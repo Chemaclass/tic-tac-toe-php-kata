@@ -16,16 +16,25 @@ final class Board
         return new self(self::createRows());
     }
 
+    /**
+     * @param list<list<?string>> $board
+     */
     private function __construct(array $board)
     {
         $this->board = $board;
     }
 
+    /**
+     * @return list<list<?string>>
+     */
     public function getBoard(): array
     {
         return $this->board;
     }
 
+    /**
+     * @return list<list<?string>>
+     */
     private static function createRows(): array
     {
         $rows = [];

@@ -11,7 +11,7 @@ final class Game
     /** @var list<Player> */
     private array $players;
 
-    private ?Player $currentPlayer = null;
+    private Player $currentPlayer;
 
     /**
      * todo: Pick a random player?
@@ -27,11 +27,26 @@ final class Game
         $this->currentPlayer = $players[0];
     }
 
-    public function askInputForCurrentPlayer(int $x, int $y): BoardResult
+    public function nextPlay(int $x, int $y): BoardResult
     {
-        // check if winner & check if draw & switch player
+        $this->board->addPoint(
+            $this->currentPlayer->symbol(),
+            new Point($x, $y)
+        );
 
-        return new BoardResult($this->board, $this->players, $this->currentPlayer);
+        $this->board->checkIfWinner();
+
+        $this->board->checkIfDraw();
+
+        $this->switchPlayer();
+
+        return new BoardResult(
+            $this->players,
+            $this->currentPlayer,
+            $this->board->state(),
+            $this->board->totalTurns(),
+            $this->board->currentBoard()
+        );
     }
 
     /**

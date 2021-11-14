@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App;
 
+use InvalidArgumentException;
+
 final class Board
 {
     private const BOARD_SIZE = 3;
 
     /** @var list<list<?string>> */
-    private $board;
+    private $currentBoard;
 
     public static function create(): self
     {
@@ -21,15 +23,24 @@ final class Board
      */
     private function __construct(array $board)
     {
-        $this->board = $board;
+        $this->currentBoard = $board;
     }
 
     /**
      * @return list<list<?string>>
      */
-    public function getBoard(): array
+    public function currentBoard(): array
     {
-        return $this->board;
+        return $this->currentBoard;
+    }
+
+    public function addPoint(string $symbol, Point $point): void
+    {
+        if (isset($this->currentBoard[$point->x()][$point->y()])) {
+            throw new InvalidArgumentException('Point already chosen!');
+        }
+
+        $this->currentBoard[$point->x()][$point->y()] = $symbol;
     }
 
     /**

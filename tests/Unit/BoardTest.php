@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Tests\Unit;
 
 use App\Board;
+use App\Point;
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 final class BoardTest extends TestCase
@@ -17,6 +19,27 @@ final class BoardTest extends TestCase
             [null, null, null],
             [null, null, null],
             [null, null, null],
-        ], $board->getBoard());
+        ], $board->currentBoard());
+    }
+
+    public function test_add_point(): void
+    {
+        $board = Board::create();
+        $board->addPoint('X', new Point(0, 0));
+
+        self::assertSame([
+            ['X', null, null],
+            [null, null, null],
+            [null, null, null],
+        ], $board->currentBoard());
+    }
+
+    public function test_add_point_was_chosen_before(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $board = Board::create();
+        $board->addPoint('X', new Point(0, 0));
+        $board->addPoint('X', new Point(0, 0));
     }
 }

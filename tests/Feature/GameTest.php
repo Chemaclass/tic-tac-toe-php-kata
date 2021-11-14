@@ -18,7 +18,7 @@ final class GameTest extends TestCase
      */
     public function test_game_when_it_is_a_draw(): void
     {
-        $this->markTestSkipped();
+//        $this->markTestSkipped();
 
         $board = Board::create();
         $players = [new Player('O'), new Player('X')];
@@ -30,15 +30,15 @@ final class GameTest extends TestCase
 //        $game->nextTurn();
 //        $game->getCurrentGameState();
 
-        $game->askInputForCurrentPlayer(1, 1); // check if winner & check if draw & switch player
-        $game->askInputForCurrentPlayer(2, 0); // check if winner & check if draw & switch player
-        $game->askInputForCurrentPlayer(0, 2); // check if winner & check if draw & switch player
-        $game->askInputForCurrentPlayer(0, 0); // check if winner & check if draw & switch player
-        $game->askInputForCurrentPlayer(1, 0); // check if winner & check if draw & switch player
-        $game->askInputForCurrentPlayer(1, 2); // check if winner & check if draw & switch player
-        $game->askInputForCurrentPlayer(2, 2); // check if winner & check if draw & switch player
-        $game->askInputForCurrentPlayer(2, 1); // check if winner & check if draw & switch player
-        $boardResult = $game->askInputForCurrentPlayer(0, 1); // check if winner & check if draw & switch player
+        $game->nextPlay(1, 1); // check if winner & check if draw & switch player
+        $game->nextPlay(2, 0); // check if winner & check if draw & switch player
+        $game->nextPlay(0, 2); // check if winner & check if draw & switch player
+        $game->nextPlay(0, 0); // check if winner & check if draw & switch player
+        $game->nextPlay(1, 0); // check if winner & check if draw & switch player
+        $game->nextPlay(1, 2); // check if winner & check if draw & switch player
+        $game->nextPlay(2, 2); // check if winner & check if draw & switch player
+        $game->nextPlay(2, 1); // check if winner & check if draw & switch player
+        $boardResult = $game->nextPlay(0, 1); // check if winner & check if draw & switch player
 
         self::assertSame('draw', $boardResult->state());
         //self::assertSame('X,O,draw,unfinished', $boardResult->state());
@@ -49,6 +49,4 @@ final class GameTest extends TestCase
 //            ['o', 'o', 'x'],
 //        ], $boardResult->gameState());
     }
-
-
 }

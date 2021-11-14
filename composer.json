@@ -1,14 +1,15 @@
 {
-    "description": "A basic PHP scaffolding",
-    "name": "chemaclass/php-scaffolding",
+    "description": "Tic Tac Toe Kata in PHP",
+    "name": "chemaclass/tic-tac-toe-php-kata",
     "type": "project",
     "license": "MIT",
     "keywords": [
         "php",
-        "scaffolding"
+        "kata",
+        "tic-tac-toe"
     ],
     "require": {
-        "php": ">=8.0"
+        "php": ">=7.4"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -44,10 +45,5 @@
         "phpstan": "./vendor/bin/phpstan analyze -c phpstan.neon src",
         "csfix": "./vendor/bin/php-cs-fixer fix",
         "csrun": "./vendor/bin/php-cs-fixer fix --dry-run"
-    },
-    "config": {
-        "platform": {
-            "php": "8.0"
-        }
     }
 }

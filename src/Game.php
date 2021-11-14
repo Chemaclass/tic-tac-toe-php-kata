@@ -34,7 +34,15 @@ final class Game
             new Point($x, $y)
         );
 
-        $this->board->checkIfWinner();
+        if ($this->board->checkIfWinner()) {
+            return new BoardResult(
+                $this->players,
+                $this->currentPlayer,
+                sprintf(GameStates::WIN, $this->currentPlayer->name()),
+                $this->board->totalTurns(),
+                $this->board->currentBoard()
+            );
+        }
 
         $this->board->checkIfDraw();
 

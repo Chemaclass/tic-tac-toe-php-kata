@@ -13,9 +13,13 @@ use RuntimeException;
 
 final class GameTest extends TestCase
 {
+    private const SYMBOL_X = 'X';
+
+    private const SYMBOL_O = 'O';
+
     public function test_create_game_with_2_players(): void
     {
-        $game = new Game(Board::create(), [new Player('X'), new Player('O')]);
+        $game = new Game(Board::create(), [new Player(self::SYMBOL_X), new Player(self::SYMBOL_O)]);
         self::assertInstanceOf(Game::class, $game);
     }
 
@@ -28,22 +32,26 @@ final class GameTest extends TestCase
     public function test_create_game_with_one_player(): void
     {
         $this->expectException(RuntimeException::class);
-        new Game(Board::create(), [new Player('X')]);
+        new Game(Board::create(), [new Player(self::SYMBOL_X)]);
     }
 
     public function test_create_game_with_three_players(): void
     {
         $this->expectException(RuntimeException::class);
-        new Game(Board::create(), [new Player('X'), new Player('X'), new Player('X')]);
+        new Game(Board::create(), [
+            new Player(self::SYMBOL_X),
+            new Player(self::SYMBOL_X),
+            new Player(self::SYMBOL_X),
+        ]);
     }
 
     public function test_next_play(): void
     {
-        $game = new Game(Board::create(), [new Player('X'), new Player('O')]);
+        $game = new Game(Board::create(), [new Player(self::SYMBOL_X), new Player(self::SYMBOL_O)]);
 
         $expected = new BoardResult(
-            [new Player('X'), new Player('O')],                 # players
-            new Player('O'),                                    # currentPlayer
+            [new Player(self::SYMBOL_X), new Player(self::SYMBOL_O)],                 # players
+            new Player(self::SYMBOL_O),                                    # currentPlayer
             'unfinished',                                       # gameState
             1,                                                  # totalTurns
             [['X', null, null], [null, null, null], [null, null, null]] # board

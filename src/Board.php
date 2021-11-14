@@ -43,6 +43,18 @@ final class Board
         $this->currentBoard[$point->x()][$point->y()] = $symbol;
     }
 
+    public function checkIfWinner(): bool
+    {
+        return ($this->currentBoard[0][0] === $this->currentBoard[0][1] && $this->currentBoard[0][1] === $this->currentBoard[0][2])
+            || ($this->currentBoard[1][0] === $this->currentBoard[1][1] && $this->currentBoard[1][1] === $this->currentBoard[1][2])
+            || ($this->currentBoard[2][0] === $this->currentBoard[2][1] && $this->currentBoard[2][1] === $this->currentBoard[2][2])
+            || ($this->currentBoard[0][0] === $this->currentBoard[1][0] && $this->currentBoard[1][0] === $this->currentBoard[2][0])
+            || ($this->currentBoard[0][1] === $this->currentBoard[1][1] && $this->currentBoard[1][1] === $this->currentBoard[2][1])
+            || ($this->currentBoard[0][2] === $this->currentBoard[1][2] && $this->currentBoard[1][2] === $this->currentBoard[2][2])
+            || ($this->currentBoard[0][0] === $this->currentBoard[1][1] && $this->currentBoard[1][1] === $this->currentBoard[2][2])
+            || ($this->currentBoard[0][2] === $this->currentBoard[1][1] && $this->currentBoard[1][1] === $this->currentBoard[2][0]);
+    }
+
     /**
      * @return list<list<?string>>
      */

@@ -50,3 +50,11 @@ In random order
 * a game has nine fields in a 3x3 grid
 * a game is over when all fields in a column are taken by a player
 * a player can take a field if not already taken
+
+
+
+# TODO
+- [ ] Implement the total of turns played
+- [ ] Implement the logic to switch the player from the current to the other.
+- [ ] Implement the draw logic
+- [ ] Create the graphical representation of the game

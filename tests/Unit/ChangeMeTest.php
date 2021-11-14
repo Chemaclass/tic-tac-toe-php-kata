@@ -20,5 +20,6 @@ final class ChangeMeTest extends TestCase
      */
     public function test_a_board_should_have_at_least_3x3_matrix(): void
     {
+        $game = Game::initialize(3);
     }
 }

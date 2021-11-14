@@ -57,4 +57,5 @@ In random order
 - [ ] Implement the total of turns played
 - [ ] Implement the logic to switch the player from the current to the other.
 - [ ] Implement the draw logic
+- [ ] Test the winning game use cases (both players)
 - [ ] Create the graphical representation of the game

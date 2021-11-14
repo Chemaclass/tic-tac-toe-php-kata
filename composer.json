@@ -30,6 +30,10 @@
         }
     },
     "scripts": {
+        "ctal": [
+            "@csfix",
+            "@test-all"
+        ],
         "test-all": [
             "@test-quality",
             "@test-phpunit"
